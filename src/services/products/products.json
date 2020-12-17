@@ -1,0 +1,35 @@
+[
+  {
+    "name": "Nokia 3310",
+    "description": "Best phone",
+    "brand": "nokia",
+    "price": 99,
+    "category": "Tech",
+    "_id": "42u63s32t4kikd0qp1",
+    "createdAt": "2020-12-11T14:22:37.092Z",
+    "imageUrl": "C:\\Users\\Jin\\Desktop\\Strive\\Module5-D5-PP-Shopping-Api\\backend\\public\\img\\products\\42u63s32t4kikd0qp1.jpg",
+    "updatedAt": "2020-12-11T14:22:39.138Z"
+  },
+  {
+    "name": "Google Pixel",
+    "description": "Good phone",
+    "brand": "Google",
+    "price": 7,
+    "category": "Tech",
+    "_id": "2e866h1nkikb2xgn",
+    "createdAt": "2020-12-11T13:28:19.942Z",
+    "imageUrl": "C:\\Users\\Jin\\Desktop\\Strive\\Module5-D5-PP-Shopping-Api\\backend\\public\\img\\products\\2e866h1nkikb2xgn.jpg",
+    "updatedAt": "2020-12-11T14:38:06.154Z"
+  },
+  {
+    "name": "Wallpaper",
+    "description": "İnspiration",
+    "brand": "Guess",
+    "price": 11,
+    "category": "Home",
+    "_id": "2e866k9lkikgsrqj",
+    "createdAt": "2020-12-11T16:08:23.658Z",
+    "imageUrl": "/home/orhanors/Desktop/STRIVE/PROJECTS/Module5_D5_PP_Shopping_API/backend/public/img/products/2e866k9lkikgsrqj.jpg",
+    "updatedAt": "2020-12-11T16:08:24.783Z"
+  }
+]
