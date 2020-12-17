@@ -274,7 +274,7 @@ router.get("/csv/exportToCSV", async (req, res, next) => {
         next(err);
       } else {
         console.log("Done");
-        res.status(200).send("Done");
+        // res.status(200).send("Done");
       }
     });
   } catch (error) {
@@ -478,7 +478,7 @@ router.post("/:id/image", upload.single("product"), async (req, res, next) => {
       modifiedProduct.updatedAt = new Date();
       newProducts.push(modifiedProduct);
       await writeDB(productsFilePath, newProducts);
-      res.send("Image uploaded.");
+      res.status(200).send("Image uploaded.");
     }
   } catch (error) {
     console.log(error);

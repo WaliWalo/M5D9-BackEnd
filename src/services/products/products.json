@@ -31,5 +31,14 @@
     "createdAt": "2020-12-11T16:08:23.658Z",
     "imageUrl": "/home/orhanors/Desktop/STRIVE/PROJECTS/Module5_D5_PP_Shopping_API/backend/public/img/products/2e866k9lkikgsrqj.jpg",
     "updatedAt": "2020-12-11T16:08:24.783Z"
+  },
+  {
+    "name": "string",
+    "description": "string",
+    "brand": "string",
+    "price": 0,
+    "category": "string",
+    "_id": "42u63s3e04kit2xh9z",
+    "createdAt": "2020-12-17T16:50:04.342Z"
   }
 ]

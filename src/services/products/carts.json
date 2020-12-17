@@ -1,1 +1,34 @@
-[{"_id":"5f6b1991df85440017160811","ownerId":"5f6b1991df8544001716080f","name":"Diego","surname":"Banovaz","products":[],"total":0},{"_id":"5f6b1991df85440017160812","ownerId":"5f6b1991df8544001716080g","name":"Stefano","surname":"Casasola","products":[],"total":0},{"_id":"5f6b1991df85440017160813","ownerId":"5f6b1991df8544001716080h","name":"Stefano","surname":"Miceli","products":[],"total":0},{"_id":"5f6b1991df85440017160814","ownerId":"5f6b1991df8544001716080i","name":"Riccardo","surname":"Gulin","products":[],"total":0}]
+[
+  {
+    "_id": "5f6b1991df85440017160811",
+    "ownerId": "5f6b1991df8544001716080f",
+    "name": "Diego",
+    "surname": "Banovaz",
+    "products": [],
+    "total": 0
+  },
+  {
+    "_id": "5f6b1991df85440017160812",
+    "ownerId": "5f6b1991df8544001716080g",
+    "name": "Stefano",
+    "surname": "Casasola",
+    "products": [],
+    "total": 0
+  },
+  {
+    "_id": "5f6b1991df85440017160813",
+    "ownerId": "5f6b1991df8544001716080h",
+    "name": "Stefano",
+    "surname": "Miceli",
+    "products": [],
+    "total": 0
+  },
+  {
+    "_id": "5f6b1991df85440017160814",
+    "ownerId": "5f6b1991df8544001716080i",
+    "name": "Riccardo",
+    "surname": "Gulin",
+    "products": [],
+    "total": 0
+  }
+]

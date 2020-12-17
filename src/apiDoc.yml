@@ -1,0 +1,705 @@
+openapi: "3.0.3"
+info:
+  description: "This is a doc practice for strive marketplace project"
+  version: "1.0.0"
+  title: "Strive-Marketplace"
+  contact:
+    email: "hungjinchong@outlook.com"
+servers:
+  - url: http://localhost:3001
+    description: Local server
+tags:
+  - name: "products"
+    description: "Everything about products"
+paths:
+  /products:
+    post:
+      tags:
+        - "products"
+      summary: "Add a product"
+      description: "POST a product"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Product"
+      responses:
+        "200":
+          description: Ok
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  _id:
+                    type: string
+        "400":
+          description: Bad Request
+          content:
+            text/html:
+              schema:
+                type: string
+                example: "Required fields missing"
+        "404":
+          description: Not Found
+          content:
+            text/html:
+              schema:
+                type: string
+                example: "Attendee Not Found"
+        "500":
+          description: Generic Server Error
+          content:
+            text/html:
+              schema:
+                type: string
+                example: "Generic Server Error"
+    get:
+      tags:
+        - "products"
+      summary: "Get all products"
+      description: "Returns a list of products in json form"
+      parameters:
+        - in: query
+          name: category
+          schema:
+            type: string
+          description: Filter products by category
+      responses:
+        "200":
+          description: Ok
+          content:
+            text/html:
+              schema:
+                type: string
+                example: "CSV DOWNLOADED"
+        "404":
+          description: Not Found
+          content:
+            text/html:
+              schema:
+                type: string
+                example: "File not found"
+        "500":
+          description: Generic Server Error
+          content:
+            text/html:
+              schema:
+                type: string
+                example: "Generic Server Error"
+  /products/{id}:
+    get:
+      tags:
+        - "products"
+      summary: "Returns a single product"
+      description: "Return a product based on given id"
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: string
+          description: "The product that needs to be fetched. Use 42u63s32t4kikd0qp1 for testing. "
+          required: true
+      responses:
+        "200":
+          description: Ok
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Product"
+        "400":
+          description: Bad Request
+          content:
+            text/html:
+              schema:
+                type: string
+        "404":
+          description: Not Found
+          content:
+            text/html:
+              schema:
+                type: string
+        "500":
+          description: Generic Server Error
+          content:
+            text/html:
+              schema:
+                type: string
+    put:
+      tags:
+        - "products"
+      summary: "Update a single product"
+      description: "Update a product based on given id"
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: string
+          description: "The product that needs to be fetched. Use 42u63s32t4kikd0qp1 for testing. "
+          required: true
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Product"
+      responses:
+        "200":
+          description: Ok
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Product"
+        "400":
+          description: Bad Request
+          content:
+            text/html:
+              schema:
+                type: string
+        "404":
+          description: Not Found
+          content:
+            text/html:
+              schema:
+                type: string
+        "500":
+          description: Generic Server Error
+          content:
+            text/html:
+              schema:
+                type: string
+    delete:
+      tags:
+        - "products"
+      summary: "Delete a single product"
+      description: "Remove a product based on given id"
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: string
+          description: "The product that needs to be removed. Use 42u63s32t4kikd0qp1 for testing. "
+          required: true
+      responses:
+        "200":
+          description: Ok
+          content:
+            text/html:
+              schema:
+                type: string
+        "400":
+          description: Bad Request
+          content:
+            text/html:
+              schema:
+                type: string
+        "404":
+          description: Not Found
+          content:
+            text/html:
+              schema:
+                type: string
+        "500":
+          description: Generic Server Error
+          content:
+            text/html:
+              schema:
+                type: string
+  /products/xml/sumTwoPrices:
+    get:
+      tags:
+        - "xml"
+      summary: "Returns a sum"
+      description: "Return a sum based on two query (number)"
+      parameters:
+        - in: query
+          name: product1
+          schema:
+            type: number
+          description: "first number"
+          required: true
+        - in: query
+          name: product2
+          schema:
+            type: number
+          description: "second number"
+          required: true
+      responses:
+        "200":
+          description: Ok
+          content:
+            text/html:
+              schema:
+                type: string
+        "400":
+          description: Bad Request
+          content:
+            text/html:
+              schema:
+                type: string
+        "404":
+          description: Not Found
+          content:
+            text/html:
+              schema:
+                type: string
+        "500":
+          description: Generic Server Error
+          content:
+            text/html:
+              schema:
+                type: string
+  /products/csv/exportToCSV:
+    get:
+      tags:
+        - "csv"
+      summary: "Download a csv"
+      description: "Downloads a csv file which contains the product list"
+      responses:
+        "200":
+          description: Ok
+          content:
+            text/html:
+              schema:
+                type: string
+        "400":
+          description: Bad Request
+          content:
+            text/html:
+              schema:
+                type: string
+        "404":
+          description: Not Found
+          content:
+            text/html:
+              schema:
+                type: string
+        "500":
+          description: Generic Server Error
+          content:
+            text/html:
+              schema:
+                type: string
+  /products/{id}/exportPdf:
+    get:
+      tags:
+        - "csv"
+      summary: "Download a csv"
+      description: "Downloads a csv file which contains the product list"
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: string
+          description: "product id"
+          required: true
+      responses:
+        "200":
+          description: Ok
+          content:
+            text/html:
+              schema:
+                type: string
+        "400":
+          description: Bad Request
+          content:
+            text/html:
+              schema:
+                type: string
+        "404":
+          description: Not Found
+          content:
+            text/html:
+              schema:
+                type: string
+        "500":
+          description: Generic Server Error
+          content:
+            text/html:
+              schema:
+                type: string
+  /products/{id}/reviews:
+    post:
+      tags:
+        - "products"
+      summary: "Add a review"
+      description: "POST a review"
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: string
+          description: "product id"
+          required: true
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Review"
+      responses:
+        "200":
+          description: Ok
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  _id:
+                    type: string
+        "400":
+          description: Bad Request
+          content:
+            text/html:
+              schema:
+                type: string
+                example: "Required fields missing"
+        "404":
+          description: Not Found
+          content:
+            text/html:
+              schema:
+                type: string
+                example: "Attendee Not Found"
+        "500":
+          description: Generic Server Error
+          content:
+            text/html:
+              schema:
+                type: string
+                example: "Generic Server Error"
+    get:
+      tags:
+        - "reviews"
+      summary: "Returns a single review"
+      description: "Return a review based on given id"
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: string
+          description: "The product id"
+          required: true
+      responses:
+        "200":
+          description: Ok
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Review"
+        "400":
+          description: Bad Request
+          content:
+            text/html:
+              schema:
+                type: string
+        "404":
+          description: Not Found
+          content:
+            text/html:
+              schema:
+                type: string
+        "500":
+          description: Generic Server Error
+          content:
+            text/html:
+              schema:
+                type: string
+    put:
+      tags:
+        - "reviews"
+      summary: "Update a single review"
+      description: "Update a product based on given id"
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: string
+          description: "The product id. "
+          required: true
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Review"
+      responses:
+        "200":
+          description: Ok
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Review"
+        "400":
+          description: Bad Request
+          content:
+            text/html:
+              schema:
+                type: string
+        "404":
+          description: Not Found
+          content:
+            text/html:
+              schema:
+                type: string
+        "500":
+          description: Generic Server Error
+          content:
+            text/html:
+              schema:
+                type: string
+    delete:
+      tags:
+        - "reviews"
+      summary: "Delete a single review"
+      description: "Remove a review based on given id"
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: string
+          description: "The review id. "
+          required: true
+      responses:
+        "200":
+          description: Ok
+          content:
+            text/html:
+              schema:
+                type: string
+        "400":
+          description: Bad Request
+          content:
+            text/html:
+              schema:
+                type: string
+        "404":
+          description: Not Found
+          content:
+            text/html:
+              schema:
+                type: string
+        "500":
+          description: Generic Server Error
+          content:
+            text/html:
+              schema:
+                type: string
+  /products/{id}/image:
+    post:
+      tags:
+        - "products"
+      summary: "Add an image to a product"
+      description: "POST an image to the product"
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: string
+          description: "product id for the image, use 42u63s32t4kikd0qp1 to test"
+          required: true
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                imageUrl:
+                  type: string
+                  format: binary
+      responses:
+        "200":
+          description: Ok
+          content:
+            text/html:
+              schema:
+                type: string
+                example: "Image Uploaded"
+        "400":
+          description: Bad Request
+          content:
+            text/html:
+              schema:
+                type: string
+                example: "Required fields missing"
+        "404":
+          description: Not Found
+          content:
+            text/html:
+              schema:
+                type: string
+                example: "Attendee Not Found"
+        "500":
+          description: Generic Server Error
+          content:
+            text/html:
+              schema:
+                type: string
+                example: "Generic Server Error"
+  /products/carts/{cartId}:
+    get:
+      tags:
+        - "cart"
+      summary: "Returns a single cart"
+      description: "Return a cart based on given user id"
+      parameters:
+        - in: path
+          name: cartId
+          schema:
+            type: string
+          description: "The cart that needs to be fetched based on the cart id. Use 5f6b1991df85440017160811 for testing. "
+          required: true
+      responses:
+        "200":
+          description: Ok
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Cart"
+        "400":
+          description: Bad Request
+          content:
+            text/html:
+              schema:
+                type: string
+        "404":
+          description: Not Found
+          content:
+            text/html:
+              schema:
+                type: string
+        "500":
+          description: Generic Server Error
+          content:
+            text/html:
+              schema:
+                type: string
+  /products/carts/{cartId}/addToCart/{productId}:
+    post:
+      tags:
+        - "cart"
+      summary: "Post a product to a cart"
+      description: "post a product to a cart with tht product id"
+      parameters:
+        - in: path
+          name: cartId
+          schema:
+            type: string
+          description: "The cart that needs to be modified based on the cart id. Use 5f6b1991df85440017160811 for testing. "
+          required: true
+        - in: path
+          name: productId
+          schema:
+            type: string
+          description: "The product that needs to be added based on the product id. Use 42u63s32t4kikd0qp1 for testing. "
+          required: true
+      responses:
+        "200":
+          description: Ok
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Cart"
+        "400":
+          description: Bad Request
+          content:
+            text/html:
+              schema:
+                type: string
+        "404":
+          description: Not Found
+          content:
+            text/html:
+              schema:
+                type: string
+        "500":
+          description: Generic Server Error
+          content:
+            text/html:
+              schema:
+                type: string
+  /products/carts/{cartId}/removeFromCart/{productId}:
+    delete:
+      tags:
+        - "cart"
+      summary: "Post a product to a cart"
+      description: "post a product to a cart with the product id"
+      parameters:
+        - in: path
+          name: cartId
+          schema:
+            type: string
+          description: "The cart that needs to be modified based on the cart id. Use 5f6b1991df85440017160811 for testing. "
+          required: true
+        - in: path
+          name: productId
+          schema:
+            type: string
+          description: "The product that needs to be added based on the product id. Use 42u63s32t4kikd0qp1 for testing. "
+          required: true
+      responses:
+        "200":
+          description: Ok
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Cart"
+        "400":
+          description: Bad Request
+          content:
+            text/html:
+              schema:
+                type: string
+        "404":
+          description: Not Found
+          content:
+            text/html:
+              schema:
+                type: string
+        "500":
+          description: Generic Server Error
+          content:
+            text/html:
+              schema:
+                type: string
+components:
+  schemas:
+    Product:
+      type: object
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        brand:
+          type: string
+        imageUrl:
+          type: string
+        price:
+          type: number
+        category:
+          type: string
+      required:
+        - name
+        - description
+        - brand
+        - price
+    Review:
+      type: object
+      properties:
+        comment:
+          type: string
+        rate:
+          type: number
+        elementId:
+          type: string
+    Cart:
+      type: object
+      properties:
+        ownerId:
+          type: string
+        name:
+          type: string
+        surname:
+          type: string
+        products:
+          type: object
+        total:
+          type: number
